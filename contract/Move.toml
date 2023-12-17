@@ -1,0 +1,11 @@
+[package]
+name = "red_packet"
+version = "0.0.1"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "a0e136a04" }
+oracle = { git = "https://github.com/MystenLabs/apps", subdir = "weather-oracle", rev = "db04fbd17d6ba91ade45c32f609b949fb47d209b" }
+
+[addresses]
+red_packet = "0x0"
+oracle = "0x8378b3bd39931aa74a6aa3a820304c1109d327426e4275183ed0b797eb6660a8"

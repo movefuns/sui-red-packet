@@ -1,0 +1,92 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+  font-family: "pixel", sans-serif;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+button:focus {
+  box-shadow: none !important;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.red-packet-button {
+  border-image-source: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z" fill="rgb(33,37,41)" /></svg>') !important;
+}
+
+.sending-btn:disabled {
+  background: #D0D5DD !important;
+  cursor: not-allowed;
+}
+
+.red-packet-button {
+  width: 280px;
+  height: 156px;
+  position: relative;
+  background-color: #ef5350 !important;
+}
+
+.red-packet-button:disabled {
+  background-color: #b78988 !important;
+  cursor: not-allowed;
+}
+
+.red-packet-button::after {
+  box-shadow: inset -4px -4px #d94257;
+}
+
+.red-packet-button:hover::after {
+  box-shadow: inset -6px -6px #8a4a4b;
+}
+
+.red-packet-button:active:not(.is-disabled)::after {
+  box-shadow: inset 4px 4px #8a4a4b;
+}
