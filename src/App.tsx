@@ -121,6 +121,10 @@ function App() {
       refetchInterval: 10000,
     }
   );
+  console.log(
+    "🚀 ~ file: App.tsx:110 ~ App ~ redPacketEvents:",
+    redPacketEvents
+  );
 
   const newRedPacketEvents = useMemo(() => {
     return (
@@ -129,6 +133,12 @@ function App() {
       ) || []
     ).flat(Infinity) as SuiEvent[];
   }, [redPacketEvents]);
+  console.log(
+    "🚀 ~ file: App.tsx:130 ~ newRedPacketEvents ~ newRedPacketEvents:",
+    newRedPacketEvents.sort(
+      (a, b) => Number(b.timestampMs) - Number(a.timestampMs)
+    )
+  );
 
   const claimRedPacketEvents = useMemo(() => {
     return (
@@ -171,15 +181,19 @@ function App() {
     "multiGetObjects",
     {
       ids:
-        newRedPacketEvents?.map(
-          (packet) => (packet.parsedJson as any).red_packet_id as string
-        ) || [],
+        newRedPacketEvents
+          ?.sort((a, b) => Number(b.timestampMs) - Number(a.timestampMs))
+          .map((packet) => (packet.parsedJson as any).red_packet_id as string)
+          .splice(0, 50) || [],
       options: {
         showContent: true,
       },
     },
     {
-      enabled: newRedPacketEvents && newRedPacketEvents.length > 0,
+      enabled:
+        newRedPacketEvents &&
+        newRedPacketEvents.length > 0 &&
+        !hasNextPageInternal,
       refetchInterval: 10000,
     }
   );
@@ -209,6 +223,8 @@ function App() {
         }) || []
     );
   }, [multi, currentAccount?.address]);
+
+  console.log("🚀 ~ file: App.tsx:1054 ~ App ~ redPacketList:", redPacketList);
 
   const { mutate: disconnect } = useDisconnectWallet();
 
